@@ -47,10 +47,6 @@ public class Goods implements Comparable, Cloneable, Serializable {
 
         //读取Goodsfile中的商品信息到控制台
         Shop.saveGoods2File();
-        //循环遍历显示商品信息
-        for (Goods goods : Shop.goodsList) {
-            System.out.println(goods);
-        }
 
     }
 

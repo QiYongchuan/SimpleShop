@@ -139,6 +139,8 @@ public class Shop {
      */
     private void run() {
         this.readListFromFile();
+        this.readGoods2File();
+//        goods.initGoodsList();
         //设定一个是否退出的条件
         boolean isBreak = true;
         while (isBreak) {
@@ -181,7 +183,7 @@ public class Shop {
                 break;
             case 3:
                 System.out.println("你选择的菜单是：查看商城");
-                goods.initGoodsList();
+                user.showGoodsList();
                 //判断用户是否登录
                 if(user.isLogin() == true){//成功登录，则可以进行购买操作
                     user.buy();
@@ -191,7 +193,7 @@ public class Shop {
                 break;
             case 4:
                 System.out.println("你选择的菜单是：查看我购买的商品");
-
+                user.showMyGoodsList();
                 break;
             case 5:
                 System.out.println("管理员登录");

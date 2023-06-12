@@ -44,7 +44,7 @@ public class User implements Serializable{
      * 展示已购买的商品信息
      *
      */
-    private void showMyGoodsList() {
+    public void showMyGoodsList() {
         System.out.println("******您购买的商品列表如下******");
         BigDecimal total = new BigDecimal("0");
         for (Goods myGoods : Shop.myGoodsList) {
@@ -157,11 +157,10 @@ public class User implements Serializable{
      */
     public void showGoodsList() {
         System.out.println("******商品列表如下******");
-//		Shop.readGoods2File();
-//		for (Goods goods : Shop.goodsList) {
-//			System.out.println(goods);
-//		}
-        goods.initGoodsList();
+		Shop.readGoods2File();
+		for (Goods goods : Shop.goodsList) {
+			System.out.println(goods);
+		}
 
     }
     /*
@@ -190,6 +189,8 @@ public class User implements Serializable{
                 myGoods.setNum(num);
                 //将已选择的商品添加到我的商品集合中
                 Shop.myGoodsList.add(myGoods);
+                int newnum=shopGoods.getNum()-num;
+                shopGoods.setNum(newnum);
                 System.out.println("是否继续Y/N");
                 String choice = Shop.sc.next();
                 choice = choice.toUpperCase();
