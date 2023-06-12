@@ -161,7 +161,7 @@ public class Shop {
         System.out.println("\t6.退出系统");
         System.out.println("******************************************");
         System.out.print("请选择菜单：");
-        int choice = sc.nextInt();
+        int choice = sc.nextInt();  //定义了一个整型变量 choice，使用 Scanner 类的 nextInt() 方法从标准输入中读取一个整数，并将其赋值给 choice 变量。该代码可能用于读取用户在控制台中输入的菜单选项，以便程序根据用户的选择进行相应的操作。需要注意的是，如果用户输入的不是整数，该代码可能会抛出 InputMismatchException 异常，需要进行相应的异常处理。
         return choice;
     }
 
@@ -191,6 +191,7 @@ public class Shop {
                 break;
             case 4:
                 System.out.println("你选择的菜单是：查看我购买的商品");
+
                 break;
             case 5:
                 System.out.println("管理员登录");

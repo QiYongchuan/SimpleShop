@@ -44,12 +44,14 @@ public class Goods implements Comparable, Cloneable, Serializable {
         Shop.goodsList.add(goods1);
         Shop.goodsList.add(goods2);
         Shop.goodsList.add(goods3);
+
+        //读取Goodsfile中的商品信息到控制台
+        Shop.saveGoods2File();
         //循环遍历显示商品信息
         for (Goods goods : Shop.goodsList) {
             System.out.println(goods);
         }
-        //读取Goodsfile中的商品信息到控制台
-        Shop.readGoods2File();
+
     }
 
     public Goods() {
@@ -116,6 +118,6 @@ public class Goods implements Comparable, Cloneable, Serializable {
         // //大于
         // return 1;
         // }
-        return this.compareTo(goods.price);
+        return this.price.compareTo(goods.price);
     }
 }
