@@ -1,6 +1,8 @@
 package shop.main;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class User implements Serializable{
@@ -26,14 +28,25 @@ public class User implements Serializable{
     private boolean checkUsername(String username) {
         //定义一个为false的bool值
         boolean res = false;
+
+
+
+
 //		//用户名长度不满3位，则重新输入
-        if (username.length() < 3) {
-            System.out.println("用户名长度不能小于3位");
+        if (username.length() <= 3) {
+            System.out.println("用户名长度不能大于3位");
             return res;
         } else if (Character.isDigit(username.charAt(0))) {//用户名不能以数字开头，则重新输入
             System.out.println("用户名不能以数字开头");
-            return res;
-        } else {
+            return res;}
+          //***********这里是与讲的不一样的地方，增加了不能以数字开头；后续这里可以再新加了一点判断*******
+        else if (username.contains("qyc")||username.contains("lsn")||username.contains("dy")||username.contains("admin")) {
+
+
+           System.out.println("你不能注册我们开发者的名字，你又不是" + username);
+           return res;
+        }
+        else {
             //成功，返回true，继续下一步操作
             return res = true;
         }
@@ -79,7 +92,14 @@ public class User implements Serializable{
             if (isCheck == true) {
                 System.out.println("请输入密码");
                 String ruserpwd = Shop.sc.next();
+
+                /*
+                这里的密码验证，没有设置纯字母或者纯数字的检测
+
+                 */
+
                 if(ruserpwd.length()>=6) {
+                    // 这里可以多加一些条件
                     boolean isDigit=false;
                     boolean isLetter=false;
                     for(int i=0;i<ruserpwd.length();i++) {
@@ -107,10 +127,10 @@ public class User implements Serializable{
 
                     }
                     else
-                        System.out.println("密码必须是字母和数字的组合");
+                        System.out.println("密码必须是字母和数字的组合，不可以是纯数字或者字母！");
                 }
                 else
-                    System.out.println("密码长度不能小于6位");
+                    System.out.println("密码长度不能小于6位,加油，多想几个吧");
             }
         }
     }
@@ -129,9 +149,13 @@ public class User implements Serializable{
                 String username = Shop.sc.next();
                 System.out.println("请输入密码");
                 String userpwd = Shop.sc.next();
+
+               /*
+                 这里for循环来遍历，验证username和password
+                */
                 for (User user : Shop.userList) {
                     if (username.equals(user.username) && userpwd.equals(user.userpwd)) {
-                        System.out.println("登录成功");
+                        System.out.println("恭喜你，登录成功！");
                         this.setLogin(true);//用来验证是否登录
                         loginResult = true;
                         break;
