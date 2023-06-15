@@ -208,6 +208,10 @@ public class User implements Serializable{
                     System.out.println("买的太多了，我们没货了");
                     continue;
                 }
+                if (num == 0){
+                    System.out.println("To buy,or not to buy,this is the question");
+                    continue;
+                }
                 if (num < 0){
                     System.out.println("不好意思，我们不进货");
                     continue;
