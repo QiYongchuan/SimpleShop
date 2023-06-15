@@ -23,7 +23,7 @@ public class Admin extends User {
         String admin = Shop.sc.next();
 
         boolean ok=false;
-        if(admin.equals("admin")) {
+        if(admin.equals("admin")|| admin.equals("qyc123") || admin.equals("lsn123") || admin.equals("dy123")) {
             ok=true;
         }
         else
@@ -33,7 +33,7 @@ public class Admin extends User {
 
                 System.out.println("请输入管理员密码");
                 String password = Shop.sc.next();
-                if (admin.equals("admin") && password.equals("admin")) {
+                if (admin.equals("admin") && password.equals("admin") || admin.equals("qyc123")|| (admin.equals("lsn123") || admin.equals("dy123") )&& password.equals("admin")) {
                     System.out.println("管理员登录成功");
                     while (true) {
                         int choice = this.showAdminMenu();
@@ -92,7 +92,13 @@ public class Admin extends User {
                 break;
             case 2:
                 System.out.println("你选择的是修改商品");
-                this.updateGoods();
+               String isContinue = "y";
+                while (isContinue.equals("y") || isContinue.equals("Y")){
+                    this.updateGoods();
+                    System.out.println("是否继续修改？Y/N");
+                    isContinue = Shop.sc.next();
+                }
+
                 break;
             case 3:
                 System.out.println("你选择的是删除商品");
@@ -116,10 +122,29 @@ public class Admin extends User {
      * 添加商品方法
      */
     public void addGoods() {
+        // 原本的功能，没有设置id互斥，也就是相同id依然可以添加进去
 
         System.out.println("****开始添加商品****");
         System.out.println("请输入商品编号：");
-        int id = Shop.sc.nextInt();
+        int id =-1;
+        while (true){
+            id = Shop.sc.nextInt();
+            boolean flag = true;
+            for (
+                    Goods good:Shop.goodsList
+            ){
+                if(good.getId() ==id){
+                    flag =false;
+                    break;
+                }
+            }
+            if (flag ==false){
+                System.out.println("已有相同id的商品，请重新输入不同id");
+                continue;
+            }
+            break;
+        }
+//        int id = Shop.sc.nextInt();
         System.out.println("请输入商品名称：");
         String name = Shop.sc.next();
         System.out.println("请输入商品价格：");
@@ -147,7 +172,7 @@ public class Admin extends User {
         Goods goods = super.findGoodsById(id);
 
         if (goods == null) {
-            System.out.println("未找到该商品");
+            System.out.println("你输入的商品不存在，请重新输入吧");
         } else {
 
             System.out.println("商品信息如下：");

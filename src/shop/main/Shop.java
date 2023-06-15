@@ -233,10 +233,10 @@ public class Shop {
      */
     private int showMenu() {
         System.out.println("*****************欢迎进入电子商城**************");
-        System.out.println("\t\t1.注册");
-        System.out.println("\t\t2.登录");
+        System.out.println("\t\t1.用户注册");
+        System.out.println("\t\t2.用户登录");
         System.out.println("\t\t3.查看商城");
-        System.out.println("\t\t4.查看我购买的商品");
+        System.out.println("\t\t4.查看我的购物车");
         System.out.println("\t\t5.管理员登录");
         System.out.println("\t\t6.退出系统");
         System.out.println("******************************************");
@@ -252,11 +252,11 @@ public class Shop {
         boolean result = true;
         switch (choice) {
             case 1:
-                System.out.println("你选择的菜单是：注册");
+                System.out.println("你选择的菜单是：用户注册");
                 user.registUser();
                 break;
             case 2:
-                System.out.println("你选择的菜单是：登录");
+                System.out.println("你选择的菜单是：用户登录");
                 user.login();
                 break;
             case 3:
@@ -272,6 +272,7 @@ public class Shop {
             case 4:
                 System.out.println("你选择的菜单是：查看我购买的商品");
                 user.showMyGoodsList();
+//                user.showNewGoodsList();
                 break;
             case 5:
                 System.out.println("管理员登录");

@@ -185,8 +185,14 @@ public class User implements Serializable{
 		for (Goods goods : Shop.goodsList) {
 			System.out.println(goods);
 		}
-
     }
+
+    public void showNewGoodsList(){
+        for (Goods goods : Shop.goodsList) {
+            System.out.println(goods);
+        }
+    }
+
     /*
      * 3.购买商品方法
      */
@@ -212,6 +218,8 @@ public class User implements Serializable{
                     System.out.println("To buy,or not to buy,this is the question");
                     continue;
                 }
+
+
                 if (num < 0){
                     System.out.println("不好意思，我们不进货");
                     continue;
