@@ -194,16 +194,24 @@ public class User implements Serializable{
         while (true) {
             System.out.println("请选择您需要购买商品的编号：");
             int id = Shop.sc.nextInt();
-            if(id>3) {
+            if(id>Shop.goodsList.size()) {
                 System.out.println("未找到改商品");
             }
             else {
                 System.out.println("您将要的购买的商品信息如下：");
                 Goods shopGoods = this.findGoodsById(id);
+
                 System.out.println(shopGoods);
                 System.out.println("请输入您需要购买商品的数量：");
                 int num = Shop.sc.nextInt();
-
+                if(num >shopGoods.getNum()){
+                    System.out.println("买的太多了，我们没货了");
+                    continue;
+                }
+                if (num < 0){
+                    System.out.println("不好意思，我们不进货");
+                    continue;
+                }
                 Goods myGoods = new Goods();
 //				myGoods.setId(shopGoods.getId());
 //				myGoods.setName(shopGoods.getName());
