@@ -33,8 +33,8 @@ public class User implements Serializable{
 
 
 //		//用户名长度不满3位，则重新输入
-        if (username.length() <= 3) {
-            System.out.println("用户名长度不能大于3位");
+        if (username.length() < 1) {
+            System.out.println("用户名长度不能小于1位");
             return res;
         } else if (Character.isDigit(username.charAt(0))) {//用户名不能以数字开头，则重新输入
             System.out.println("用户名不能以数字开头");
