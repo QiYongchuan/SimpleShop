@@ -102,7 +102,13 @@ public class Admin extends User {
                 break;
             case 3:
                 System.out.println("你选择的是删除商品");
-                this.deleteGoods();
+                String isContinue2 = "y";
+                while (isContinue2.equals("y") || isContinue2.equals("Y")){
+                    this.deleteGoods();
+                    System.out.println("是否继续修改？Y/N");
+                    isContinue2 = Shop.sc.next();
+                }
+
                 break;
             case 4:
                 System.out.println("你选择的是查看商品列表");
@@ -197,13 +203,18 @@ public class Admin extends User {
      * 删除商品方法
      */
     public void deleteGoods() {
-        System.out.println("****开始修改商品信息****");
-        System.out.println("请输入要修改的商品编号：");
+        System.out.println("****开始删除商品信息****");
+        System.out.println("请输入要删除的商品编号：");
         int id = Shop.sc.nextInt();
         Goods goods = super.findGoodsById(id);
-        Shop.goodsList.remove(goods);
-        System.out.println("商品删除成功");
-        Shop.saveGoods2File();
+        if (goods == null){
+            System.out.println("不可以虚空删除");
+        } else {
+            Shop.goodsList.remove(goods);
+            System.out.println("商品删除成功");
+            Shop.saveGoods2File();
+        }
+
     }
 
 
