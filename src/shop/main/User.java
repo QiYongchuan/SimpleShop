@@ -137,16 +137,16 @@ public class User implements Serializable{
     /*
      * 2.登录方法
      */
-    public void login() {
+    public void login(String username) {
         boolean loginResult = false;
         int maxTime = 0;
         while (true) {
             if (maxTime != 3) {
                 maxTime++;
                 System.out.println("欢迎登录");
-                System.out.println("请输入用户名");
-                Shop.sc = new Scanner(System.in);
-                String username = Shop.sc.next();
+//                System.out.println("请输入用户名");
+//                Shop.sc = new Scanner(System.in);
+//                String username = Shop.sc.next();
                 System.out.println("请输入密码");
                 String userpwd = Shop.sc.next();
 

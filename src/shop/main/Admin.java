@@ -13,27 +13,34 @@ public class Admin extends User {
      */
     private static final long serialVersionUID = 1L;
 
+
+//    public  Admin (String username) {
+//        this.username = username;
+//    }
     /*
      * 管理员登录
      */
-    public void adminLogin() {
+    public void adminLogin( String username) {
 
         System.out.println("欢迎管理员登录");
-        System.out.println("请输入管理员账号");
-        String admin = Shop.sc.next();
+//        System.out.println("请输入管理员账号");
+//        String admin = Shop.sc.next();
 
         boolean ok=false;
-        if(admin.equals("admin")|| admin.equals("qyc123") || admin.equals("lsn123") || admin.equals("dy123")) {
+        if(username.equals("admin")|| username.equals("qyc123") || username.equals("lsn123") || username.equals("dy123")) {
             ok=true;
         }
-        else
-            System.out.println("账号输入有误，请重新输入");
+//        else
+////            System.out.println("账号输入有误，请重新输入");
+//        {
+//
+//        }
         while (true) {
             if(ok==true) {
 
                 System.out.println("请输入管理员密码");
                 String password = Shop.sc.next();
-                if (admin.equals("admin") && password.equals("admin") || admin.equals("qyc123")|| (admin.equals("lsn123") || admin.equals("dy123") )&& password.equals("admin")) {
+                if (username.equals("admin") && password.equals("admin") || username.equals("qyc123")|| (username.equals("lsn123") || username.equals("dy123") )&& password.equals("admin")) {
                     System.out.println("管理员登录成功");
                     while (true) {
                         int choice = this.showAdminMenu();

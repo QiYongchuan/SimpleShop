@@ -42,6 +42,10 @@ public class Shop {
     User user = new User();
     Admin admin = new Admin();
     Goods goods = new Goods();
+  /*
+  新增一个局部变量，方便注册用户跳转
+   */
+    private String uname; // 将username提升为成员变量
     /**
      * 把修改和添加的商品信息储存到文本中
      *
@@ -221,6 +225,7 @@ public class Shop {
     颜色库
     [0;42m  = 绿色背景
     [0;40m  = 黑色背景
+    [0;39m  = 白色字体，可作为分隔点
     [0;36m  = 浅蓝色字体
     [0;35m  = 紫色字体
     [0;34m  = 蓝色字体
@@ -233,12 +238,12 @@ public class Shop {
      */
     private int showMenu() {
         System.out.println("*****************欢迎进入电子商城**************");
-        System.out.println("\t\t1.用户注册");
-        System.out.println("\t\t2.用户登录");
-        System.out.println("\t\t3.查看商城");
+        System.out.println("\t\t\u001B[0;39m1.用户注册");
+        System.out.println("\t\t\u001B[0;32m2.登录");
+        System.out.println("\t\t\u001B[0;39m3.查看商城");
         System.out.println("\t\t4.查看我的购物车");
-        System.out.println("\t\t5.管理员登录");
-        System.out.println("\t\t6.退出系统");
+//        System.out.println("\t\t5.管理员登录");
+        System.out.println("\t\t5.退出系统");
         System.out.println("******************************************");
         System.out.print("请选择菜单：");
         int choice = sc.nextInt();  //定义了一个整型变量 choice，使用 Scanner 类的 nextInt() 方法从标准输入中读取一个整数，并将其赋值给 choice 变量。该代码可能用于读取用户在控制台中输入的菜单选项，以便程序根据用户的选择进行相应的操作。需要注意的是，如果用户输入的不是整数，该代码可能会抛出 InputMismatchException 异常，需要进行相应的异常处理。
@@ -256,8 +261,24 @@ public class Shop {
                 user.registUser();
                 break;
             case 2:
-                System.out.println("你选择的菜单是：用户登录");
-                user.login();
+                System.out.println("你选择的菜单是：登录模块");
+                String isAdmin = "y";
+                System.out.println("请输入你的用户名：");
+                Shop.sc = new Scanner(System.in);
+                String username = Shop.sc.next();
+//                Admin adminObj  = new Admin(username);
+
+
+                if (username.equals("admin")||username.equals("qyc123")||username.equals("lsn123")||username.equals("dy123")){
+                    System.out.println("管理员登录");
+                    admin.adminLogin(username);
+
+                } else {
+                    System.out.println("普通用户登录");
+
+                    user.login(username);
+                }
+
                 break;
             case 3:
                 System.out.println("你选择的菜单是：查看商城");
@@ -274,11 +295,11 @@ public class Shop {
                 user.showMyGoodsList();
 //                user.showNewGoodsList();
                 break;
+//            case 5:
+//                System.out.println("管理员登录");
+//                admin.adminLogin();
+//                break;
             case 5:
-                System.out.println("管理员登录");
-                admin.adminLogin();
-                break;
-            case 6:
                 System.out.println("谢谢使用，下次再见！");
                 result = false;
                 System.exit(0);
