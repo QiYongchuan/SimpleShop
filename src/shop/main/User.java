@@ -181,7 +181,7 @@ public class User implements Serializable{
      */
     public void showGoodsList() {
         System.out.println("******商品列表如下******");
-		Shop.readGoods2File();
+
 		for (Goods goods : Shop.goodsList) {
 			System.out.println(goods);
 		}

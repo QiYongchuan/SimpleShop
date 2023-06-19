@@ -266,7 +266,6 @@ public class Shop {
                 System.out.println("请输入你的用户名：");
                 Shop.sc = new Scanner(System.in);
                 String username = Shop.sc.next();
-//                Admin adminObj  = new Admin(username);
 
 
                 if (username.equals("admin")||username.equals("qyc123")||username.equals("lsn123")||username.equals("dy123")){

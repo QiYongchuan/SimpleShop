@@ -48,14 +48,12 @@ public class Admin extends User {
                         if (choice == 5) {
                             break;
                         }
-
                         this.choiceAdminMenu(choice);
                     }
                     break;
                 } else {
                     System.out.println("登录失败");
                 }
-
             }
         }
     }
@@ -181,17 +179,21 @@ public class Admin extends User {
     public void updateGoods() {
         System.out.println("****开始修改商品信息****");
         System.out.println("请输入要修改的商品编号：");
+
         int id = Shop.sc.nextInt();
         Goods goods = super.findGoodsById(id);
 
-        if (goods == null) {
-            System.out.println("你输入的商品不存在，请重新输入吧");
-        } else {
+        while (goods == null) {
+            System.out.println("你输入的商品不存在，请重新输入：");
+            id = Shop.sc.nextInt();
+            goods = super.findGoodsById(id);
+        }
+
 
             System.out.println("商品信息如下：");
             System.out.println("商品编号\t商品名称\t商品价格\t商品数量\t");
             System.out.println(goods.getId() + "\t" + goods.getName() + "\t" + goods.getPrice() + "\t" + goods.getNum() + "\t");
-        }
+
         System.out.println("请输入修改后的商品名称：");
         String name = Shop.sc.next();
         goods.setName(name);
