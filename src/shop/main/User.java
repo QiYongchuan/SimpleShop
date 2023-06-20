@@ -29,9 +29,6 @@ public class User implements Serializable{
         //定义一个为false的bool值
         boolean res = false;
 
-
-
-
 //		//用户名长度不满3位，则重新输入
         if (username.length() < 1) {
             System.out.println("用户名长度不能小于1位");
@@ -43,14 +40,13 @@ public class User implements Serializable{
         else if (username.contains("qyc")||username.contains("lsn")||username.contains("dy")||username.contains("admin")) {
 
 
-           System.out.println("你不能注册我们开发者的名字，你又不是" + username);
+           System.out.println("😠你不能注册我们开发者的名字，你又不是" + username);
            return res;
         }
         else {
             //成功，返回true，继续下一步操作
             return res = true;
         }
-
     }
 
     /**
@@ -87,7 +83,6 @@ public class User implements Serializable{
             //校验结果的返回值
             isCheck = this.checkUsername(rusername);
 
-            System.out.println(isCheck);
 
             if (isCheck == true) {
                 System.out.println("请输入密码");
@@ -117,7 +112,7 @@ public class User implements Serializable{
                             user.setUsername(rusername);
                             user.setUserpwd(ruserpwd);
                             Shop.userList.add(user);
-                            System.out.println("注册成功");
+                            System.out.println("注册成功🚀");
                             //用户注册成功则将用户的注册信息保存到Userfile文件中
                             Shop.saveListToFile();
                             break;
@@ -130,7 +125,7 @@ public class User implements Serializable{
                         System.out.println("密码必须是字母和数字的组合，不可以是纯数字或者字母！");
                 }
                 else
-                    System.out.println("密码长度不能小于6位,加油，多想几个吧");
+                    System.out.println("密码长度不能小于6位,加油，多想几个吧👏");
             }
         }
     }
@@ -143,7 +138,8 @@ public class User implements Serializable{
         while (true) {
             if (maxTime != 3) {
                 maxTime++;
-                System.out.println("欢迎登录");
+                System.out.println("欢迎♥" +
+                        "用户登录");
 //                System.out.println("请输入用户名");
 //                Shop.sc = new Scanner(System.in);
 //                String username = Shop.sc.next();
@@ -155,7 +151,7 @@ public class User implements Serializable{
                 */
                 for (User user : Shop.userList) {
                     if (username.equals(user.username) && userpwd.equals(user.userpwd)) {
-                        System.out.println("恭喜你，登录成功！");
+                        System.out.println("恭喜你，用户登录成功!\uD83C\uDF89");
                         this.setLogin(true);//用来验证是否登录
                         loginResult = true;
                         break;
@@ -165,12 +161,12 @@ public class User implements Serializable{
                     break;
                 } else {
                     if (maxTime != 3) {
-                        System.out.println("密码有误,请重新登录");
+                        System.out.println("密码有误,请重新登录🙌");
                     }
                 }
 
             } else {
-                System.out.println(maxTime + "次登录失败，系统退出");
+                System.out.println(maxTime + "次登录失败，系统退出🙌");
                 System.exit(0);
             }
 
@@ -180,7 +176,7 @@ public class User implements Serializable{
      * 管理员查看商品列表
      */
     public void showGoodsList() {
-        System.out.println("******商品列表如下******");
+        System.out.println("******商品列表如下❀******");
 
 		for (Goods goods : Shop.goodsList) {
 			System.out.println(goods);
@@ -200,28 +196,30 @@ public class User implements Serializable{
         while (true) {
             System.out.println("请选择您需要购买商品的编号：");
             int id = Shop.sc.nextInt();
-            if(id>Shop.goodsList.size()) {
-                System.out.println("未找到改商品");
-            }
+            if(findGoodsById(id) ==null) {
+                System.out.println("我们没有找到你要的商品，请再试一次😘");
+            }   // 这里的判断逻辑不准确，如果是id在最小值范围内，是 id>Shop.goodsList.size()
+
+
             else {
-                System.out.println("您将要的购买的商品信息如下：");
+                System.out.println("您将要的购买的商品信息如下：🏆");
                 Goods shopGoods = this.findGoodsById(id);
 
                 System.out.println(shopGoods);
                 System.out.println("请输入您需要购买商品的数量：");
                 int num = Shop.sc.nextInt();
                 if(num >shopGoods.getNum()){
-                    System.out.println("买的太多了，我们没货了");
+                    System.out.println("买的太多了，我们没货了\uD83D\uDE48");
                     continue;
                 }
                 if (num == 0){
-                    System.out.println("To buy,or not to buy,this is the question");
+                    System.out.println("To buy,or not to buy,this is the question🤦‍🤦‍️");
                     continue;
                 }
 
 
                 if (num < 0){
-                    System.out.println("不好意思，我们不进货");
+                    System.out.println("不好意思，我们不进货🙌");
                     continue;
                 }
                 Goods myGoods = new Goods();

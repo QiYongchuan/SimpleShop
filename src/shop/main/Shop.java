@@ -145,7 +145,7 @@ public class Shop {
         this.readListFromFile();
         this.readGoods2File();
 //        goods.initGoodsList();
-//         printAnything();
+         printAnything();
         //菜单页面设定一个是否退出的条件
         boolean showMenu = true;
         while (showMenu) {
@@ -167,7 +167,7 @@ public class Shop {
             }
             //打印前部分
             for(int j = 1;j<=7+(i-1)*4;j++){
-                System.out.print("\033[0;31m+");
+                System.out.print("\033[0;31m*");
             }
             //打印中心空白部分
             for (int j = 1; j <= 10-(i-1)*4; j++) {
@@ -175,7 +175,7 @@ public class Shop {
             }
             //打印后部分
             for(int j = 1;j<=7+(i-1)*4;j++){
-                System.out.print("+");
+                System.out.print("*");
             }
             System.out.println();
         }
@@ -185,7 +185,7 @@ public class Shop {
                 System.out.print(" ");
             }
             for (int j = 1; j <= 34; j++) {
-                System.out.print("+");
+                System.out.print("*");
             }
             System.out.println();
         }
@@ -195,7 +195,7 @@ public class Shop {
                 System.out.print(" ");
             }
             for (int j = 1; j <= 34-i*2; j++) {
-                System.out.print("+");
+                System.out.print("*");
             }
             System.out.println();
         }
@@ -205,7 +205,7 @@ public class Shop {
                 System.out.print(" ");
             }
             for (int j = 1; j <= 28-i*4; j++) {
-                System.out.print("+");
+                System.out.print("*");
             }
             System.out.println();
         }
@@ -215,7 +215,7 @@ public class Shop {
                 System.out.print(" ");
             }
             for (int j = 1; j <= 16-i*6; j++) {
-                System.out.print("+");
+                System.out.print("*");
             }
             System.out.println();
         }
@@ -237,14 +237,14 @@ public class Shop {
      * 菜单展示
      */
     private int showMenu() {
-        System.out.println("*****************欢迎进入电子商城**************");
-        System.out.println("\t\t\u001B[0;39m1.用户注册");
-        System.out.println("\t\t\u001B[0;32m2.登录");
-        System.out.println("\t\t\u001B[0;39m3.查看商城");
-        System.out.println("\t\t4.查看我的购物车");
+        System.out.println("\u001B[0;39m*****************欢迎进入电子商城**************");
+        System.out.println("\t\t\u001B[0;39m1.用户注册💻");
+        System.out.println("\t\t\u001B[0;32m2.登录🐾");
+        System.out.println("\t\t\u001B[0;33m3.查看商城🏪");
+        System.out.println("\t\t\u001B[0;39m4.查看我的购物车🛒");
 //        System.out.println("\t\t5.管理员登录");
-        System.out.println("\t\t5.退出系统");
-        System.out.println("******************************************");
+        System.out.println("\t\t\u001B[0;31m5.退出系统👋");
+        System.out.println("\u001B[0;39m******************************************");
         System.out.print("请选择菜单：");
         int choice = sc.nextInt();  //定义了一个整型变量 choice，使用 Scanner 类的 nextInt() 方法从标准输入中读取一个整数，并将其赋值给 choice 变量。该代码可能用于读取用户在控制台中输入的菜单选项，以便程序根据用户的选择进行相应的操作。需要注意的是，如果用户输入的不是整数，该代码可能会抛出 InputMismatchException 异常，需要进行相应的异常处理。
         return choice;
@@ -257,11 +257,11 @@ public class Shop {
         boolean result = true;
         switch (choice) {
             case 1:
-                System.out.println("你选择的菜单是：用户注册");
+                System.out.println("你选择的菜单是：用户注册 💻");
                 user.registUser();
                 break;
             case 2:
-                System.out.println("你选择的菜单是：登录模块");
+                System.out.println("你选择的菜单是：登录模块 🐾");
                 String isAdmin = "y";
                 System.out.println("请输入你的用户名：");
                 Shop.sc = new Scanner(System.in);
@@ -280,17 +280,17 @@ public class Shop {
 
                 break;
             case 3:
-                System.out.println("你选择的菜单是：查看商城");
+                System.out.println("你选择的菜单是：查看商城 🏪");
                 user.showGoodsList();
                 //判断用户是否登录
                 if(user.isLogin() == true){//成功登录，则可以进行购买操作
                     user.buy();
                 }else{
-                    System.out.println("你还未登录，请先登录，在购买商品");
+                    System.out.println("你还未登录，请先登录，再购买商品👻");
                 }
                 break;
             case 4:
-                System.out.println("你选择的菜单是：查看我购买的商品");
+                System.out.println("你选择的菜单是：查看我购买的商品 🛒🛒");
                 user.showMyGoodsList();
 //                user.showNewGoodsList();
                 break;
@@ -299,11 +299,12 @@ public class Shop {
 //                admin.adminLogin();
 //                break;
             case 5:
-                System.out.println("谢谢使用，下次再见！");
+                System.out.println("谢谢使用，下次再见！👋");
                 result = false;
                 System.exit(0);
             default:
-                System.out.println("输入有误，请重新输入———————");
+                System.out.println("\u001B[0;31m输入有误，请重新输入———————");
+                printAnything();
                 break;
         }
         return result;
